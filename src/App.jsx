@@ -47,6 +47,8 @@ const iconPaths = {
   quote: <><path d="M4 11h6v7H4zM14 11h6v7h-6z" /><path d="M10 11a5 5 0 0 1-5-5M20 11a5 5 0 0 1-5-5" /></>,
   code: <><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 4l-4 16" /></>,
   check: <path d="m5 12 4 4L19 6" />,
+  undo: <><path d="M9 14 4 9l5-5" /><path d="M4 9h10a6 6 0 0 1 0 12h-2" /></>,
+  redo: <><path d="m15 14 5-5-5-5" /><path d="M20 9H10a6 6 0 0 0 0 12h2" /></>,
 };
 
 function Icon({ name, size = 20, className = '' }) {
@@ -88,7 +90,6 @@ function App() {
   const visibleNotes = useMemo(() => {
     let notes = [...initialNotes];
     if (activeSection === 'favoritos') notes = notes.filter((note) => note.favorite);
-    if (activeSection === 'categorias') notes = notes.filter((note) => note.category === 'Estudos');
     if (activeSection === 'lixeira') notes = [];
     if (search.trim()) {
       const term = search.toLocaleLowerCase('pt-BR');
@@ -221,7 +222,7 @@ function App() {
               </div>
               <input className="editor-title-input" placeholder="Título da anotação" value={draftTitle} onChange={(event) => { setDraftTitle(event.target.value); setDraftStatus('Alterações nesta sessão'); }} />
               <div className="editor-toolbar" aria-label="Ferramentas de formatação">
-                {['undo-2', 'redo-2', 'bold', 'italic', 'underline', 'quote', 'list', 'link', 'code'].map((name) => (
+                {['undo', 'redo', 'bold', 'italic', 'underline', 'quote', 'list', 'link', 'code'].map((name) => (
                   <button key={name} className="toolbar-button" type="button" title={name} aria-label={name}><Icon name={name} size={18} /></button>
                 ))}
               </div>
