@@ -1,12 +1,53 @@
 :root {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #f4f4f5;
-  background: #111318;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-optical-sizing: auto;
+
+  /* Identidade visual */
+  --color-brand-primary: #101C32;
+  --color-brand-secondary: #1D3557;
+  --color-brand-accent: #EAF3FF;
+
+  /* Tema claro */
+  color-scheme: light;
+  --color-background: #F5F8FC;
+  --color-surface: #FFFFFF;
+  --color-surface-secondary: #EAF3FF;
+  --color-text: #101C32;
+  --color-text-secondary: #64748B;
+  --color-border: #DCE6F2;
+
+  /* Elementos interativos */
+  --color-button: #1D3557;
+  --color-button-text: #FFFFFF;
+  --color-accent: #EAF3FF;
+  --color-accent-text: #1D3557;
+
+  /* Sidebar: azul-marinho nos dois temas */
+  --sidebar-background: #101C32;
+  --sidebar-surface: #1D3557;
+  --sidebar-text: #FFFFFF;
+  --sidebar-text-secondary: #D0DEEF;
+  --sidebar-active: #294568;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-background: #101C32;
+  --color-surface: #1D3557;
+  --color-surface-secondary: #294568;
+  --color-text: #FFFFFF;
+  --color-text-secondary: #D0DEEF;
+  --color-border: #36516F;
+
+  --color-button: #EAF3FF;
+  --color-button-text: #1D3557;
+  --color-accent: #294568;
+  --color-accent-text: #FFFFFF;
 }
 
 * {
@@ -17,6 +58,8 @@ body {
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
+  background: var(--color-background);
+  color: var(--color-text);
 }
 
 button,
@@ -31,17 +74,17 @@ textarea {
   place-items: center;
   padding: 24px;
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(119, 92, 190, 0.16), transparent 52%),
-    #111318;
+    radial-gradient(ellipse at 50% 0%, rgba(29, 53, 87, 0.10), transparent 52%),
+    var(--color-background);
 }
 
 .welcome-card {
   width: min(100%, 520px);
   padding: clamp(28px, 7vw, 56px);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  border: 1px solid var(--color-border);
   border-radius: 28px;
-  background: rgba(25, 27, 35, 0.88);
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+  background: var(--color-surface);
+  box-shadow: 0 24px 80px rgba(16, 28, 50, 0.10);
 }
 
 .brand-mark {
@@ -50,15 +93,15 @@ textarea {
   height: 48px;
   place-items: center;
   border-radius: 15px;
-  background: #8b75d7;
-  color: #fff;
+  background: var(--color-brand-primary);
+  color: #FFFFFF;
   font-size: 21px;
   font-weight: 750;
 }
 
 .eyebrow {
   margin: 36px 0 10px;
-  color: #a99adf;
+  color: var(--color-brand-secondary);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -66,6 +109,7 @@ textarea {
 
 h1 {
   margin: 0;
+  color: var(--color-text);
   font-size: clamp(40px, 10vw, 56px);
   letter-spacing: -0.055em;
 }
@@ -73,7 +117,7 @@ h1 {
 .welcome-copy {
   max-width: 340px;
   margin: 16px 0 28px;
-  color: #a5a6b0;
+  color: var(--color-text-secondary);
   font-size: 15px;
   line-height: 1.7;
 }
@@ -81,10 +125,10 @@ h1 {
 .status-label {
   display: inline-flex;
   padding: 9px 12px;
-  border: 1px solid rgba(169, 154, 223, 0.22);
+  border: 1px solid var(--color-border);
   border-radius: 999px;
-  background: rgba(139, 117, 215, 0.1);
-  color: #c6b9f4;
+  background: var(--color-accent);
+  color: var(--color-accent-text);
   font-size: 12px;
 }
 
