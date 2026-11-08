@@ -98,7 +98,9 @@ function App() {
     return notes;
   }, [activeSection, search]);
 
-  const pageTitle = navItems.find((item) => item.id === activeSection)?.label || 'Início';
+  const pageTitle = navItems.find((item) => item.id === activeSection)?.label || (activeSection === 'configuracoes' ? 'Configurações' : 'Início');
+  const todayLabel = new Intl.DateTimeFormat('pt-BR', { weekday: 'long', day: '2-digit', month: 'long' }).format(new Date()).toLocaleUpperCase('pt-BR');
+  const greeting = new Date().getHours() < 12 ? 'Bom dia.' : new Date().getHours() < 18 ? 'Boa tarde.' : 'Boa noite.';
 
   function openNewNote() {
     setSelectedNote(null);
@@ -233,8 +235,8 @@ function App() {
             <>
               <section className="welcome-heading">
                 <div>
-                  <p className="eyebrow">DOMINGO, 08 DE NOVEMBRO</p>
-                  <h1>{activeSection === 'inicio' ? 'Bom dia.' : pageTitle}</h1>
+                  <p className="eyebrow">{todayLabel}</p>
+                  <h1>{activeSection === 'inicio' ? greeting : pageTitle}</h1>
                   <p>{activeSection === 'inicio' ? 'Seu espaço para organizar ideias e manter tudo em perspectiva.' : activeSection === 'favoritos' ? 'Suas anotações marcadas para encontrar rapidamente.' : activeSection === 'categorias' ? 'Explore suas anotações por assunto.' : activeSection === 'lixeira' ? 'Anotações removidas ficarão disponíveis aqui.' : 'Encontre e organize suas anotações.'}</p>
                 </div>
                 <button className="primary-button heading-create" onClick={openNewNote}><Icon name="plus" size={18} />Nova anotação</button>
